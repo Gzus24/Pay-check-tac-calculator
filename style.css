@@ -58,13 +58,13 @@ body{
         color: #a18d8c;
         font-size: 5rem;
     }
-    .third{
+    .span{
         margin: auto;
         display: block;
         font-size: 2rem;
         color: #a18d8c;
     }
-    #work{
+    #btn{
         display: block;
         margin: auto;
         padding: .5%;
