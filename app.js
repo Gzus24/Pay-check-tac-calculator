@@ -1,30 +1,29 @@
-const btnCalculate = document.getElementById('btn');
-const spanOne = document.querySelector('.first');
-const spanTwo = document.querySelector('.second');
-const result = document.querySelector('.result');
-const fedTax = document.querySelector('.span');
+const applyTaxBtn = document.getElementById('btn');
+const showNetPay = document.querySelector('.result');
+const fedTaxExcluded = document.querySelector('.span');
 
 class NetPay{
-    constructor(hours, payRate){
-        this.hours = hours;
+    constructor(hour, payRate){
+        this.hour = hour;
         this.payRate = payRate;
     }
     calculate(){
-        let grossPay = (this.hours * this.payRate)
-        let deduction = grossPay * 0.0765
-        if(isNaN(deduction)){
-           result.textContent = "Enter a number"
+        let taxRate = 0.0765;
+        let grossPay = this.hour * this.payRate;
+        let taxDeduction = grossPay * taxRate;
+        if(isNaN(taxDeduction)){
+            showNetPay.textContent = "Enter a number"
         }
         else {
-            result.textContent =  '$' + Math.floor(grossPay - deduction);
-            fedTax.textContent = '(federal income taxes not included)';
+            showNetPay.textContent =  `$ ${Math.floor(grossPay - taxDeduction)}`;
+            fedTaxExcluded.textContent = '(federal income taxes not included)';
         }
     }
 }
 
-btnCalculate.onclick = ()=>{
-    const hoursWorked = parseInt(document.getElementById('hrsWorked').value);
-    const hourlyPay = parseInt(document.getElementById('hourly').value);
-    let userOne= new PayDay(hoursWorked, hourlyPay);
-    userOne.calculate();
+applyTaxBtn.onclick = ()=>{
+    const hours = parseInt(document.getElementById('hour').value);
+    const hourRate = parseInt(document.getElementById('hrRate').value);
+    let employee = new NetPay(hours, hourRate);
+    employee.calculate();
 }
