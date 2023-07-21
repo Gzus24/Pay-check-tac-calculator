@@ -4,7 +4,7 @@ const spanTwo = document.querySelector('.second');
 const result = document.querySelector('.result');
 const fedTax = document.querySelector('.span');
 
-class PayDay{
+class NetPay{
     constructor(hours, payRate){
         this.hours = hours;
         this.payRate = payRate;
